@@ -2,26 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Alert, Col, Row } from "react-bootstrap";
 
-const Home = () => {
-    const [message, setMessage] = useState("");
-    const [variant, setVariant] = useState("warning");
-    useEffect(() => {
-        (
-            async () => {
-                try {
-                    const response = await axios.get('user')
+const Home = ({ user }) => {
+    let message, variant;
 
-                    console.log(response);
-                    const user = response.data
-
-                    setMessage(`Hello! ${user.first_name} ${user.last_name}`);
-                    setVariant("success")
-                } catch (e) {
-                    setMessage("You are not logged in!")
-                }
-            }
-        )();
-    }, []);
+    if(user) {
+        message = `Hello! ${user.first_name} ${user.last_name}`;
+        variant = "success";
+    } else {
+        message = "You are not logged in!";
+        variant = "danger";
+    }
 
     return (
         <>
