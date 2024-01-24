@@ -15,10 +15,7 @@ const Login = ({ setLogin }: { setLogin: Function }) => {
       email: email,
       password: password,
     });
-
     setRedirect(true);
-
-    setLogin();
   };
 
   if (redirect) {
