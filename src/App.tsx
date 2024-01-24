@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Forgot from "./Pages/Forgot";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" Component={() => <Home user={user} setLogin={()=>setLogin(true)}/>}></Route>
             <Route path="/login" Component={() => <Login setLogin={()=>setLogin(true)} />}></Route>
             <Route path="/register" Component={Register}></Route>
+            <Route path="/forgot" Component={Forgot}></Route>
           </Routes>
         </BrowserRouter>
       </div>

@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useState } from "react";
 import "./Pages.css";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = ({ setLogin }: { setLogin: Function }) => {
   const [email, setEmail] = useState("");
@@ -48,6 +49,9 @@ const Login = ({ setLogin }: { setLogin: Function }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <label htmlFor="floatingPassword">Password</label>
+          </div>
+          <div className="mb-3">
+            <Link to="/forgot">Forgot Password</Link>
           </div>
           <button className="btn btn-primary w-100 py-2" type="submit">
             Sign in
