@@ -12,7 +12,7 @@ function Register() {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const submit = async (e) => {
+  const submit = async (e:any) => {
     e.preventDefault();
 
     await axios.post('register', {

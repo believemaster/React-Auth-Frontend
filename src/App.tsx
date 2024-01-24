@@ -9,29 +9,28 @@ import axios from "axios";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [login, setLogin] = useState(false);
   useEffect(() => {
-    (
-      async () => {
-        try {
-          const response = await axios.get('user')
+    (async () => {
+      try {
+        const response = await axios.get("user");
 
-          console.log(response);
-          const user = response.data
-          setUser(user);
-        } catch (e) {
-          setUser(null)
-        }
+        console.log(response);
+        const user = response.data;
+        setUser(user);
+      } catch (e) {
+        setUser(null);
       }
-    )();
-  }, []);
+    })();
+  }, [login]);
   return (
     <div className="App">
       <div className="container">
         <BrowserRouter>
-          <NavbarHeader user={user} />
+          <NavbarHeader user={user} setLogin={()=>setLogin(false)} />
           <Routes>
-            <Route path="/" Component={() => <Home user={user} />}></Route>
-            <Route path="/login" Component={Login}></Route>
+            <Route path="/" Component={() => <Home user={user} setLogin={()=>setLogin(true)}/>}></Route>
+            <Route path="/login" Component={() => <Login setLogin={()=>setLogin(true)} />}></Route>
             <Route path="/register" Component={Register}></Route>
           </Routes>
         </BrowserRouter>

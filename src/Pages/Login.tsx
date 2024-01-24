@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import "./Pages.css";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-function Login() {
-
+const Login = ({ setLogin }: { setLogin: Function }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const submit = async (e) => {
+  const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    await axios.post('login', {
+    await axios.post("login", {
       email: email,
-      password: password
+      password: password,
     });
 
     setRedirect(true);
-  }
-  
-  if(redirect) {
-    return <Navigate to='/' />
+
+    setLogin();
+  };
+
+  if (redirect) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -61,6 +62,6 @@ function Login() {
       </main>
     </>
   );
-}
+};
 
 export default Login;

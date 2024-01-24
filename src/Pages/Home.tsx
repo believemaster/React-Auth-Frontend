@@ -1,16 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Alert, Col, Row } from "react-bootstrap";
 
-const Home = ({ user }) => {
+const Home = ({ user, setLogin }: {user:any, setLogin: Function}) => {
     let message, variant;
 
     if(user) {
         message = `Hello! ${user.first_name} ${user.last_name}`;
         variant = "success";
+        setLogin();
     } else {
         message = "You are not logged in!";
         variant = "danger";
+        setLogin();
     }
 
     return (

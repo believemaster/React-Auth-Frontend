@@ -1,9 +1,10 @@
 import axios from "axios";
 import { Navbar, Nav } from "react-bootstrap";
 
-const NavbarHeader = ({ user }) => {
+const NavbarHeader = ({ user, setLogin }: {user:any, setLogin: Function}) => {
   const logout = async () => {
     await axios.post('logout', {});
+    setLogin();
   }
 
   let links;
